@@ -19,7 +19,7 @@ function Header() {
 </div>;
 }
 
-function Hero() { return <>
+function Hero({ paused, onToggleMotion }) { return <>
 <section className="hero wrap">
   <div className="hero-copy"><p className="eyebrow"><span className="status-dot"></span> BIG IDEAS. INFINITE POSSIBILITIES.</p><h1>Good brands<br />deserve a<br /><span className="hero-last">bigger <em>loop.</em><svg viewBox="0 0 280 25" aria-hidden="true"><path d="M5 17 Q140 -4 271 9 M25 24 Q156 8 247 14"/></svg></span></h1><p className="hero-description">We turn your brand into the one they remember.<br className="desktop-break" /> Creative content, meaningful connections, and<br className="desktop-break" /> digital strategies that move you forward.</p><div className="hero-actions"><a className="button" href="#plans">Find your growth plan <span>↗</span></a><a className="text-link" href="#services">Explore what we do <span>↓</span></a></div><div className="hero-note"><span className="mini-orbit">✳</span><p>A little strategy. A lot of creativity.<br /><strong>One connected approach to your growth.</strong></p></div></div>
   <div className="hero-art" role="img" aria-label="Creative brand campaign collage connected by a bold orange infinity loop">
@@ -29,6 +29,7 @@ function Hero() { return <>
     <div className="reel-card"><div className="reel-top"><span>● &nbsp; IN THE MAKING</span><span>↗</span></div><div className="reel-title">Made to<br />make you<br /><em>stop.</em></div><div className="play-icon">▶</div><div className="reel-bottom">CONTENT THAT CONNECTS <span>↗</span></div></div>
     <div className="floating-tag"><span>✦</span> Creativity, on repeat.</div><div className="strategy-tag"><span className="tag-dot"></span> STRATEGY MEETS SCROLL-STOPPING</div><span className="art-star">✳</span><div className="orbit-label">IDEATE → CREATE → CONNECT → GROW</div>
   </div>
+  <button className="motion-toggle" onClick={onToggleMotion} aria-pressed={paused}>{paused ? '▶ Play motion' : 'Ⅱ Pause motion'}</button>
 </section>
 <div className="capability-strip"><div className="wrap"><span>SOCIAL MEDIA</span><span className="asterisk">✳</span><span>CONTENT CREATION</span><span className="asterisk">✳</span><span>BRAND STRATEGY</span><span className="asterisk">✳</span><span>PERFORMANCE MARKETING</span><span className="asterisk">✳</span><span>DIGITAL EXPERIENCES</span></div></div>
 
@@ -69,6 +70,44 @@ function Pricing({ onSelect }) {
 
 export default function App() {
   const [plan, setPlan] = useState('Not sure yet');
+  const [paused, setPaused] = useState(false);
+  const page = useRef(null);
+  useEffect(() => {
+    if (!('IntersectionObserver' in window)) return;
+    const elements = [...page.current.querySelectorAll('.section-heading, .service-grid article, .approach-title, .steps article, .plan, .faq-section > div, .contact-copy, #enquiry-form')];
+    const reveal = (element) => element.classList.add('is-revealed');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          reveal(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    elements.forEach(element => {
+      element.classList.add('scroll-reveal');
+      if (element.getBoundingClientRect().top < window.innerHeight) reveal(element);
+      else observer.observe(element);
+    });
+    // Keyboard navigation must never land on an invisible control.
+    const onFocus = event => {
+      const element = event.target.closest('.scroll-reveal');
+      if (element) reveal(element);
+    };
+    const root = page.current;
+    root.addEventListener('focusin', onFocus);
+    const hero = root.querySelector('.hero');
+    const heroObserver = new IntersectionObserver(entries => {
+      hero.classList.toggle('motion-visible', entries[0].isIntersecting);
+    });
+    heroObserver.observe(hero);
+    return () => {
+      observer.disconnect();
+      heroObserver.disconnect();
+      root.removeEventListener('focusin', onFocus);
+      elements.forEach(element => element.classList.remove('scroll-reveal', 'is-revealed'));
+    };
+  }, []);
   const nameInput = useRef(null);
   const contact = useRef(null);
   function choosePlan(value) {
@@ -76,5 +115,5 @@ export default function App() {
     contact.current?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
     nameInput.current?.focus({ preventScroll: true });
   }
-  return <><a className="skip-link" href="#main">Skip to content</a><Header /><main id="main"><Hero /><Services /><Approach /><Pricing onSelect={choosePlan} /><FAQs /><Contact plan={plan} setPlan={setPlan} nameInput={nameInput} contactRef={contact} /></main><Footer /></>;
+  return <div ref={page} className={paused ? "motion-paused" : undefined}><a className="skip-link" href="#main">Skip to content</a><Header /><main id="main"><Hero paused={paused} onToggleMotion={() => setPaused(value => !value)} /><Services /><Approach /><Pricing onSelect={choosePlan} /><FAQs /><Contact plan={plan} setPlan={setPlan} nameInput={nameInput} contactRef={contact} /></main><Footer /></div>;
 }
