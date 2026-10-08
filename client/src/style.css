@@ -7,3 +7,4 @@
 @media(max-width:760px){.hero{grid-template-columns:minmax(0,1fr)}.hero h1{font-size:clamp(48px,13.3vw,76px)}.hero h1 br:nth-child(1){display:initial}.hero-copy{min-width:0}.hero-last svg{width:50%}.hero-last{display:inline}.hero-actions{gap:15px}.hero-art{max-width:none}}
 
 @media(min-width:761px) and (max-width:900px){.hero{grid-template-columns:minmax(0,1.02fr) minmax(0,1fr);overflow:hidden}.hero-art{min-width:0}.header nav{gap:18px}.header nav a{white-space:nowrap}}
+.form-error{color:#a62c13!important;font-size:12px!important;line-height:1.6}.download-button{margin-top:12px}.button:disabled,.dialog-close:disabled{cursor:wait;opacity:.6;transform:none}#root{min-height:100vh}
