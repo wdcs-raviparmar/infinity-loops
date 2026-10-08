@@ -58,3 +58,9 @@
 @media(prefers-reduced-motion:reduce){.motion-toggle{display:none}.scroll-reveal{opacity:1;translate:none}}
 @media print{.scroll-reveal{opacity:1!important;translate:none!important}.motion-toggle{display:none}}
 .motion-paused dialog,.motion-paused dialog::backdrop,.motion-paused details p,.motion-paused nav{animation:none!important}
+
+/* Original supplied SVG lockup, including its built-in clear space. */
+.brand-logo{display:block;width:280px;height:auto;max-width:100%}
+.footer .brand-logo{width:240px}
+@media(max-width:900px){.header .brand-logo{width:230px}}
+@media(max-width:760px){.header .brand-logo{width:220px}.footer .brand-logo{width:220px}}

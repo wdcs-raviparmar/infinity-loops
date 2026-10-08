@@ -15,7 +15,7 @@ function Header() {
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
   }, [open]);
-  return <div ref={ref}><header className="header"><a className="brand" href="#" aria-label="Infinity Loops home"><span className="brand-symbol">∞</span><span>infinity loops<span className="brand-sub">DIGITAL MARKETING AGENCY</span></span></a><button className="menu-toggle" aria-expanded={open} aria-controls="navigation" aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen(!open)}><span></span><span></span></button><nav className={open ? "is-open" : ""} onClick={(event) => { if (event.target.closest("a")) setOpen(false); }} id="navigation" aria-label="Main navigation"><a href="#services">What we do</a><a href="#approach">Our approach</a><a href="#plans">Our plans</a><a className="button button-small" href="#contact">Let’s talk <span>↗</span></a></nav></header>
+  return <div ref={ref}><header className="header"><a className="brand" href="#" aria-label="Infinity Loops home"><img className="brand-logo" src="/brand/infinity-loops-logo.svg" alt="Infinity Loops — Digital Marketing Agency" width="821" height="197" /></a><button className="menu-toggle" aria-expanded={open} aria-controls="navigation" aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen(!open)}><span></span><span></span></button><nav className={open ? "is-open" : ""} onClick={(event) => { if (event.target.closest("a")) setOpen(false); }} id="navigation" aria-label="Main navigation"><a href="#services">What we do</a><a href="#approach">Our approach</a><a href="#plans">Our plans</a><a className="button button-small" href="#contact">Let’s talk <span>↗</span></a></nav></header>
 </div>;
 }
 
@@ -51,7 +51,7 @@ function FAQs() { return <>
 </>; }
 
 function Footer() { return <>
-<footer className="footer wrap"><a className="brand" href="#"><span className="brand-symbol">∞</span><span>infinity loops<span className="brand-sub">DIGITAL MARKETING AGENCY</span></span></a><p>Creativity in motion. Growth on repeat.</p><span>© <span>{new Date().getFullYear()}</span> Infinity Loops</span><a className="back-top" href="#" aria-label="Back to top">↑</a></footer>
+<footer className="footer wrap"><a className="brand" href="#" aria-label="Infinity Loops home"><img className="brand-logo" src="/brand/infinity-loops-logo.svg" alt="Infinity Loops — Digital Marketing Agency" width="821" height="197" /></a><p>Creativity in motion. Growth on repeat.</p><span>© <span>{new Date().getFullYear()}</span> Infinity Loops</span><a className="back-top" href="#" aria-label="Back to top">↑</a></footer>
 
 </>; }
 
