@@ -64,3 +64,15 @@
 .footer .brand-logo{width:240px}
 @media(max-width:900px){.header .brand-logo{width:230px}}
 @media(max-width:760px){.header .brand-logo{width:220px}.footer .brand-logo{width:220px}}
+
+/* Reference logo motion: one continuous seven-second trip around both loops. */
+@media(prefers-reduced-motion:no-preference){
+  .logo-track-under{animation:logo-track-under 7s linear infinite}
+  .logo-track-over{animation:logo-track-over 7s linear infinite}
+  .logo-dot-under{animation:logo-dot-under 7s linear infinite}
+  .logo-dot-over{animation:logo-dot-over 7s linear infinite}
+}
+@keyframes logo-track-under{from{stroke-dashoffset:357.606}to{stroke-dashoffset:-88.823}}
+@keyframes logo-track-over{from{stroke-dashoffset:610.141}to{stroke-dashoffset:163.713}}
+@keyframes logo-dot-under{from{stroke-dashoffset:-66.323}to{stroke-dashoffset:-512.751}}
+@keyframes logo-dot-over{from{stroke-dashoffset:186.213}to{stroke-dashoffset:-260.215}}
