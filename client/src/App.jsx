@@ -47,20 +47,20 @@ function Hero({ paused, onToggleMotion }) { return <>
 </>; }
 
 const services = [
-  { icon: '◎', title: 'Social media, managed.', outcome: 'Stay visible and relevant', copy: 'A consistent social presence shaped around your brand, audience, and monthly goals.', includes: 'Content calendars · publishing · captions' },
-  { icon: '✦', title: 'Content worth stopping for.', outcome: 'Turn attention into interest', copy: 'Posts, carousels, and reels with a clear idea, a strong hook, and your personality built in.', includes: 'Design · reels · copywriting' },
-  { icon: '↗', title: 'Performance with purpose.', outcome: 'Reach the people who matter', copy: 'Focused campaigns and thoughtful creative that move the right audience towards action.', includes: 'Meta ads · creative testing · optimisation' },
-  { icon: '⌁', title: 'Strategy with direction.', outcome: 'Know your next best move', copy: 'Market context, competitor insight, and campaign planning that give every idea a job to do.', includes: 'Research · positioning · campaign plans' },
-  { icon: '▣', title: 'Digital spaces that connect.', outcome: 'Make every visit count', copy: 'Clear, memorable websites and landing pages that tell your story and guide people forward.', includes: 'Web design · landing pages · conversion flow' },
-  { icon: '◌', title: 'Collaborations with chemistry.', outcome: 'Bring real people into the story', copy: 'Creator partnerships and brand shoots planned to feel natural, useful, and true to your audience.', includes: 'Creators · shoots · campaign concepts' },
+  { icon: '◎', title: 'Social Media Management', outcome: 'Build and manage your social presence', copy: 'We plan, create, caption, schedule, and publish consistent content for your brand.', includes: 'Instagram · Facebook · content calendars' },
+  { icon: '✦', title: 'Content Creation', outcome: 'Create content people want to watch', copy: 'Professional posts, carousels, reels, and campaign creatives designed for your audience.', includes: 'Graphic design · reels · copywriting' },
+  { icon: '↗', title: 'Google & Meta Ads Management', outcome: 'Reach more potential customers', copy: 'We plan, launch, monitor, and improve paid campaigns across Google, Facebook, and Instagram.', includes: 'Campaign setup · ad creatives · optimisation' },
+  { icon: '⌁', title: 'Brand Strategy & Consulting', outcome: 'Give your marketing a clear direction', copy: 'Practical research and planning to define your audience, positioning, content, and campaigns.', includes: 'Market research · competitor analysis · planning' },
+  { icon: '▣', title: 'Website & Landing Page Design', outcome: 'Turn website visits into enquiries', copy: 'Clear, responsive websites and landing pages that explain your offer and guide visitors to act.', includes: 'Website design · landing pages · user experience' },
+  { icon: '◌', title: 'Influencer Marketing & Brand Shoots', outcome: 'Promote your brand through real people', copy: 'We help plan creator collaborations and brand shoots that produce useful campaign content.', includes: 'Creator research · shoot planning · campaign content' },
 ];
 
 function Services() { return <section className="services wrap section" id="services">
   <div className="services-heading">
-    <div><p className="eyebrow"><span className="status-dot" /> WHAT WE BRING TO THE TABLE</p><h2>Everything your brand needs<br />to stay <em>in motion.</em></h2></div>
-    <div><p className="services-lead">One connected creative partner for the ideas people see and the strategy that makes them work.</p><p className="services-note">Choose a starting point. We’ll shape the right mix around your goals.</p></div>
+    <div><p className="eyebrow"><span className="status-dot" /> OUR SERVICES</p><h2>Digital marketing services<br />for <em>business growth.</em></h2></div>
+    <div><p className="services-lead">Content, advertising, strategy, and websites managed by one digital marketing team.</p><p className="services-note">Choose the services your business needs, or contact us for a custom monthly plan.</p></div>
   </div>
-  <div className="services-meta"><span>06 WAYS TO MOVE YOUR BRAND FORWARD</span><span>EXPLORE THE MIX <b>↓</b></span></div>
+  <div className="services-meta"><span>06 DIGITAL MARKETING SERVICES</span><span>EXPLORE SERVICES <b>↓</b></span></div>
   <div className="service-grid">{services.map((service, index) => <article key={service.title}>
     <div className="service-card-top"><span className="service-icon" aria-hidden="true">{service.icon}</span><span className="service-number">0{index + 1}</span></div>
     <h3>{service.title}</h3><strong>{service.outcome}</strong><p>{service.copy}</p>
