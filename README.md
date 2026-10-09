@@ -68,3 +68,7 @@ Tests run the real Express API against a temporary real MongoDB process using `m
 - `.openai/hosting.json` — retained identity of the private frontend preview
 
 Prices follow the supplied notes: ₹6,000, ₹10,000, ₹15,000, and ₹20,000–₹30,000 monthly. Confirm premium billing, external fees, and actual business contacts before public launch.
+
+## Brand content direction
+
+Infinity Loops is a new company with no portfolio or customer reviews yet. Show services, the working process, and clearly labelled concept illustrations. Add client work, testimonials, or performance figures only when authentic material becomes available.
