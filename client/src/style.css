@@ -97,6 +97,7 @@
 :root[data-theme="dark"] .brand-logo > path { fill: var(--ink); }
 :root[data-theme="dark"] .logo-track { stroke: var(--ink); }
 :root[data-theme="dark"] .art-grid { background: radial-gradient(ellipse at center, #f568361c, transparent 70%); }
+:root[data-theme="dark"] .button-small:hover { background: #d9ddd8; }
 :root[data-theme="dark"] .art-caption { color: var(--muted); }
 :root[data-theme="dark"] .floating-tag, :root[data-theme="dark"] .strategy-tag { background: var(--surface); border-color: var(--line); }
 :root[data-theme="dark"] .service-icon { color: #ff956d; }
