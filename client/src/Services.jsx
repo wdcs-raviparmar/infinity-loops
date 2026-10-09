@@ -29,18 +29,25 @@ export default function Services({ paused }) {
   useEffect(() => {
     const root = section.current;
     const cards = [...root.querySelectorAll('.service-stack-item')];
-    const media = matchMedia('(min-width: 801px) and (min-height: 720px) and (prefers-reduced-motion: no-preference)');
+    const motionOk = matchMedia('(prefers-reduced-motion: no-preference)');
+    const phone = matchMedia('(max-width: 800px)');
+    const tall = matchMedia('(min-height: 720px)');
     let frame = 0;
     const update = () => {
       frame = 0;
-      const enabled = media.matches && !paused;
+      const enabled = motionOk.matches && (phone.matches || tall.matches) && !paused;
       root.classList.toggle('has-stack-motion', enabled);
       // Read geometry together before writing styles. Native sticky handles the pinning.
       const tops = cards.map(card => card.getBoundingClientRect().top);
+      const gap = phone.matches ? 14 : 28;
+      // A card taller than the viewport pins by its bottom edge so none of it gets cropped.
+      const sticks = cards.map(card => Math.min(gap, innerHeight - card.offsetHeight - gap));
       const start = innerHeight * .92;
       cards.forEach((card, index) => {
-        const covered = enabled && index < cards.length - 1 ? Math.max(0, Math.min(1, (start - tops[index + 1]) / (start - 28))) : 0;
+        const next = index < cards.length - 1;
+        const covered = enabled && next ? Math.max(0, Math.min(1, (start - tops[index + 1]) / (start - sticks[index + 1]))) : 0;
         const enter = enabled ? Math.max(0, Math.min(1, (innerHeight - tops[index]) / innerHeight)) : 1;
+        card.style.setProperty('--stick-top', `${sticks[index].toFixed(1)}px`);
         card.style.setProperty('--covered', covered.toFixed(4));
         card.style.setProperty('--enter', enter.toFixed(4));
       });
@@ -49,12 +56,13 @@ export default function Services({ paused }) {
     update();
     window.addEventListener('scroll', schedule, { passive: true });
     window.addEventListener('resize', schedule);
-    media.addEventListener('change', schedule);
+    const queries = [motionOk, phone, tall];
+    queries.forEach(query => query.addEventListener('change', schedule));
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener('scroll', schedule);
       window.removeEventListener('resize', schedule);
-      media.removeEventListener('change', schedule);
+      queries.forEach(query => query.removeEventListener('change', schedule));
     };
   }, [paused]);
 
@@ -62,9 +70,9 @@ export default function Services({ paused }) {
     <div className="wrap">
       <div className="service-showcase-heading"><p className="eyebrow"><span className="status-dot" /> WHAT WE BRING TO THE TABLE</p><h2 id="services-title">How we help<br />your business <em>grow.</em></h2><div className="service-showcase-intro"><p>Social media, content, advertising, strategy, and websites.<br />Choose the support your business needs.</p><span>SCROLL TO EXPLORE <b aria-hidden="true">↓</b></span></div></div>
       <div className="service-stack">{services.map(service => <article className={`service-stack-item service-stack-item--${service.key}`} key={service.key} aria-labelledby={`service-${service.key}`}>
-        <div className="service-stack-card"><div className="service-stack-copy"><p className="service-stack-label">{service.label}</p><h3 id={`service-${service.key}`}>{service.title}</h3><p className="service-stack-description">{service.copy}</p><ul>{service.items.map(item => <li key={item}>{item}</li>)}</ul><a className="service-stack-link" href="#contact"><span className="service-link-circle" aria-hidden="true">↗</span><span>{service.action}</span></a></div><ServiceImage type={service.key} /><span className="service-card-loop" aria-hidden="true">∞</span></div>
+        <div className="service-stack-card"><div className="service-stack-copy"><p className="service-stack-label">{service.label}</p><h3 id={`service-${service.key}`}>{service.title}</h3><p className="service-stack-description">{service.copy}</p><ul>{service.items.map(item => <li key={item}>{item}</li>)}</ul><a className="service-stack-link" href="#contact"><span className="service-link-circle" aria-hidden="true">↗︎</span><span>{service.action}</span></a></div><ServiceImage type={service.key} /><span className="service-card-loop" aria-hidden="true">∞</span></div>
       </article>)}</div>
-      <div className="service-showcase-footer"><p>Not sure which service you need?</p><a className="text-link" href="#contact">Tell us about your business <span>↗</span></a></div>
+      <div className="service-showcase-footer"><p>Not sure which service you need?</p><a className="text-link" href="#contact">Tell us about your business <span>↗︎</span></a></div>
     </div>
   </section>;
 }

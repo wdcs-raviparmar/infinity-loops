@@ -64,14 +64,14 @@ export default function Contact({ plan, setPlan, nameInput, contactRef }) {
   }
 
   return <section className="contact-section" id="contact" ref={contactRef}>
-    <div className="wrap contact-inner"><div className="contact-copy"><p className="eyebrow">LET’S START SOMETHING GOOD</p><h2>Your next chapter?<br /><em>Let’s create it.</em></h2><p>Tell us a little about your brand.<br />We’ll find the right way to move it forward.</p><div className="contact-detail"><span>DROP US A LINE</span><a href="mailto:hello@infinityloops.example">hello@infinityloops.example ↗</a><small>Sample email · Replace with your business contact.</small></div><div className="contact-mark" aria-hidden="true">∞</div></div>
-      <form id="enquiry-form" ref={form} onSubmit={preview}><div className="form-heading"><h3>Get into the loop.</h3><span>✳</span></div>
+    <div className="wrap contact-inner"><div className="contact-copy"><p className="eyebrow">LET’S START SOMETHING GOOD</p><h2>Your next chapter?<br /><em>Let’s create it.</em></h2><p>Tell us a little about your brand.<br />We’ll find the right way to move it forward.</p><div className="contact-detail"><span>DROP US A LINE</span><a href="mailto:hello@infinityloops.example">hello@infinityloops.example ↗︎</a><small>Sample email · Replace with your business contact.</small></div><div className="contact-mark" aria-hidden="true">∞</div></div>
+      <form id="enquiry-form" ref={form} onSubmit={preview}><div className="form-heading"><h3>Get into the loop.</h3><span>✳︎</span></div>
         <div className="form-row"><label>Your name<input ref={nameInput} name="name" autoComplete="name" placeholder="Alex Morgan" required maxLength={100} /></label><label>Work email<input name="email" type="email" autoComplete="email" placeholder="alex@yourbrand.com" required maxLength={200} /></label></div>
         <label>Brand / business name<input name="business" autoComplete="organization" placeholder="Your next big thing" required maxLength={150} /></label>
         <label>I’m interested in<select id="plan-select" name="plan" value={plan} onChange={event => setPlan(event.target.value)}><option value="Not sure yet">Let’s find the right fit</option>{plans.map(item => <option key={item.name} value={item.name}>{item.name} — {item.price} / month</option>)}</select></label>
         <label>A little about your goals<textarea name="goals" rows={3} placeholder="What would you love to achieve?" required maxLength={2000} /></label>
         {error && !dialog.current?.open && <p className="form-error" role="alert">{error}</p>}
-        <button className="button" type="submit">Preview my enquiry <span>↗</span></button>
+        <button className="button" type="submit">Preview my enquiry <span>↗︎</span></button>
         <p className="form-note">{demo ? 'Demo form. Preview and download your brief; no enquiry is sent.' : 'Review your enquiry before sending. Your details will be saved so we can respond.'}</p>
       </form>
     </div>
@@ -81,7 +81,7 @@ export default function Contact({ plan, setPlan, nameInput, contactRef }) {
       <p role="status">{sent ? 'Your enquiry has been saved successfully.' : demo ? 'This is a demo preview. Nothing has been sent.' : 'Review your details, then send your enquiry.'}</p>
       <pre id="brief-preview">{brief}</pre>
       {error && <p className="form-error" role="alert">{error}</p>}
-      {!demo && !sent && <button className="button" onClick={sendEnquiry} disabled={status === 'sending'}>{status === 'sending' ? 'Sending…' : 'Send my enquiry'} <span>↗</span></button>}
+      {!demo && !sent && <button className="button" onClick={sendEnquiry} disabled={status === 'sending'}>{status === 'sending' ? 'Sending…' : 'Send my enquiry'} <span>↗︎</span></button>}
       <button className={`button ${!demo ? 'button-outline download-button' : ''}`} id="download-brief" onClick={downloadBrief}>Download my brief <span>↓</span></button>
     </dialog>
   </section>;

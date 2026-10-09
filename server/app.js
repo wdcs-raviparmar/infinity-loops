@@ -35,6 +35,8 @@ export function createApp() {
     }
   });
   app.use('/api', (_request, response) => response.status(404).json({ error: 'Endpoint not found.' }));
+  // Temporary: serves the SPA for the /theme comparison page. Remove with client/src/theme-preview.
+  app.get('/theme', (_request, response) => response.sendFile(fileURLToPath(new URL('../dist/index.html', import.meta.url))));
   app.use(express.static(fileURLToPath(new URL('../dist', import.meta.url))));
   app.use((_request, response) => response.status(404).send('Page not found.'));
   app.use((error, _request, response, _next) => {

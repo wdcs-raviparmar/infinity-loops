@@ -1,0 +1,63 @@
+/* Colour tokens. A theme is just the --t-* inputs below; everything else is derived,
+   in light and dark. The /theme preview page overrides the --t-* inputs live. */
+:root {
+  --t-ink: #18242b;          /* text and dark UI */
+  --t-accent: #f56836;       /* buttons, highlights, logo dot */
+  --t-accent-text: #f56836;  /* accent when used as text on paper (must stay readable) */
+  --t-on-accent: #18242b;    /* text on top of accent fills */
+  --t-paper: #fffefa;        /* page background */
+  --t-tint: #fff2e9;         /* soft accent-tinted panels */
+  --t-deep: #18242b;         /* dark section background */
+  --t-alt: #183e37;          /* secondary colour: poster card, checks */
+  --t-alt-soft: #bed291;     /* light companion of --t-alt */
+  --t-warm: #fac26f;         /* hero reel gradient start */
+  --t-cool: #d49bda;         /* hero reel gradient end */
+  --t-art-a: #ffb15d; --t-art-b: #fc632c; --t-art-c: #d73709;  /* hero infinity loop gradient */
+}
+:root, .theme-scope {
+  --ink: var(--t-ink);
+  --paper: var(--t-paper);
+  --pale: var(--t-tint);
+  --orange: var(--t-accent);
+  --accent-ink: var(--t-accent-text);
+  --on-accent: var(--t-on-accent);
+  --surface: color-mix(in srgb, #fff 70%, var(--t-paper));
+  --muted: color-mix(in srgb, var(--t-ink) 66%, var(--t-paper));
+  --line: color-mix(in srgb, var(--t-ink) 11%, var(--t-paper));
+  --soft: color-mix(in srgb, var(--t-ink) 3%, var(--t-paper));
+  --placeholder: color-mix(in srgb, var(--t-ink) 42%, var(--t-paper));
+  --accent-wash: color-mix(in srgb, var(--t-accent) 6%, #fff);
+  --accent-hover: color-mix(in srgb, var(--t-accent) 82%, #fff);
+  --accent-deep: color-mix(in srgb, var(--t-accent) 80%, #000);
+  --warm-line: color-mix(in srgb, var(--t-accent) 14%, var(--t-paper));
+  --glow: color-mix(in srgb, var(--t-accent) 24%, #fff);
+  --shadow-ink: color-mix(in srgb, var(--t-ink) 13%, transparent);
+  --deep: var(--t-deep);
+  --accent-on-dark: color-mix(in srgb, var(--t-accent) 85%, #fff);
+  --on-deep-muted: color-mix(in srgb, #fff 70%, var(--t-deep));
+  --check: color-mix(in srgb, var(--t-alt) 55%, var(--t-paper));
+  --card-social: color-mix(in srgb, var(--t-accent) 8%, var(--t-paper));
+  --card-content: color-mix(in srgb, var(--t-alt-soft) 38%, var(--t-paper));
+  --card-ads: color-mix(in srgb, var(--t-accent) 17%, var(--t-paper));
+  --card-strategy: color-mix(in srgb, var(--t-ink) 8%, var(--t-paper));
+  --card-web: color-mix(in srgb, var(--t-cool) 24%, var(--t-paper));
+}
+:root[data-theme="dark"], :root[data-theme="dark"] .theme-scope, .theme-scope[data-mode="dark"] {
+  --ink: color-mix(in srgb, var(--t-paper) 94%, var(--t-ink));
+  --paper: color-mix(in srgb, var(--t-deep) 70%, #000);
+  --surface: color-mix(in srgb, var(--paper) 96%, #fff);
+  --pale: color-mix(in srgb, var(--t-accent) 10%, var(--paper));
+  --muted: color-mix(in srgb, var(--ink) 68%, var(--paper));
+  --line: color-mix(in srgb, var(--ink) 15%, var(--paper));
+  --soft: color-mix(in srgb, var(--ink) 5%, var(--paper));
+  --placeholder: color-mix(in srgb, var(--ink) 45%, var(--paper));
+  --accent-ink: color-mix(in srgb, var(--t-accent) 85%, #fff);
+  --accent-wash: color-mix(in srgb, var(--t-accent) 12%, var(--paper));
+  --deep: color-mix(in srgb, var(--t-deep) 45%, #000);
+  --check: color-mix(in srgb, var(--t-alt-soft) 70%, var(--paper));
+  --card-social: color-mix(in srgb, var(--t-accent) 9%, var(--paper));
+  --card-content: color-mix(in srgb, var(--t-alt-soft) 12%, var(--paper));
+  --card-ads: color-mix(in srgb, var(--t-accent) 14%, var(--paper));
+  --card-strategy: color-mix(in srgb, var(--ink) 7%, var(--paper));
+  --card-web: color-mix(in srgb, var(--t-cool) 14%, var(--paper));
+}
