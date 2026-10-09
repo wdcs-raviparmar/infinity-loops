@@ -3,21 +3,31 @@ import { plans } from '../../shared/plans.js';
 import Contact from './Contact.jsx';
 import BrandLogo from './BrandLogo.jsx';
 
-function Header() {
+function Header({ theme, onToggleTheme }) {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
   useEffect(() => {
     function onKey(event) {
       if (event.key === 'Escape' && open) {
         setOpen(false);
-        ref.current?.querySelector('button')?.focus();
+        ref.current?.querySelector('.menu-toggle')?.focus();
       }
     }
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
   }, [open]);
-  return <div ref={ref}><header className="header"><a className="brand" href="#" aria-label="Infinity Loops home"><BrandLogo /></a><button className="menu-toggle" aria-expanded={open} aria-controls="navigation" aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen(!open)}><span></span><span></span></button><nav className={open ? "is-open" : ""} onClick={(event) => { if (event.target.closest("a")) setOpen(false); }} id="navigation" aria-label="Main navigation"><a href="#services">What we do</a><a href="#approach">Our approach</a><a href="#plans">Our plans</a><a className="button button-small" href="#contact">Let’s talk <span>↗</span></a></nav></header>
-</div>;
+  return <div ref={ref}><header className="header">
+    <a className="brand" href="#" aria-label="Infinity Loops home"><BrandLogo /></a>
+    <nav className={open ? "is-open" : ""} onClick={(event) => { if (event.target.closest("a")) setOpen(false); }} id="navigation" aria-label="Main navigation"><a href="#services">What we do</a><a href="#approach">Our approach</a><a href="#plans">Our plans</a><a className="button button-small" href="#contact">Let’s talk <span>↗</span></a></nav>
+    <div className="header-controls">
+      <button className="theme-toggle" type="button" onClick={onToggleTheme} aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`} title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          {theme === 'dark' ? <><circle cx="12" cy="12" r="4" /><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" /></> : <path d="M20.5 14.1A8.5 8.5 0 0 1 9.9 3.5a8.5 8.5 0 1 0 10.6 10.6Z" />}
+        </svg>
+      </button>
+      <button className="menu-toggle" aria-expanded={open} aria-controls="navigation" aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen(!open)}><span></span><span></span></button>
+    </div>
+  </header></div>;
 }
 
 function Hero({ paused, onToggleMotion }) { return <>
@@ -72,6 +82,17 @@ function Pricing({ onSelect }) {
 export default function App() {
   const [plan, setPlan] = useState('Not sure yet');
   const [paused, setPaused] = useState(false);
+  const [theme, setTheme] = useState(() => document.documentElement.dataset.theme || 'light');
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#11191e' : '#fffefa');
+  }, [theme]);
+  function toggleTheme() {
+    const next = theme === 'dark' ? 'light' : 'dark';
+    setTheme(next);
+    try { localStorage.setItem('infinity-loops-theme', next); } catch { /* Switching works even when storage is disabled. */ }
+  }
   const page = useRef(null);
   useEffect(() => {
     if (!('IntersectionObserver' in window)) return;
@@ -116,5 +137,5 @@ export default function App() {
     contact.current?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
     nameInput.current?.focus({ preventScroll: true });
   }
-  return <div ref={page} className={paused ? "motion-paused" : undefined}><a className="skip-link" href="#main">Skip to content</a><Header /><main id="main"><Hero paused={paused} onToggleMotion={() => setPaused(value => !value)} /><Services /><Approach /><Pricing onSelect={choosePlan} /><FAQs /><Contact plan={plan} setPlan={setPlan} nameInput={nameInput} contactRef={contact} /></main><Footer /></div>;
+  return <div ref={page} className={paused ? "motion-paused" : undefined}><a className="skip-link" href="#main">Skip to content</a><Header theme={theme} onToggleTheme={toggleTheme} /><main id="main"><Hero paused={paused} onToggleMotion={() => setPaused(value => !value)} /><Services /><Approach /><Pricing onSelect={choosePlan} /><FAQs /><Contact plan={plan} setPlan={setPlan} nameInput={nameInput} contactRef={contact} /></main><Footer /></div>;
 }
