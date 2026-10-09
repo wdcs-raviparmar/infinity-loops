@@ -4,5 +4,5 @@ export default defineConfig({
   root: 'client',
   plugins: [react()],
   build: { outDir: '../dist', emptyOutDir: true },
-  server: { host: '127.0.0.1', port: 5173, proxy: { '/api': 'http://127.0.0.1:5000' } },
+  server: { host: '127.0.0.1', port: 5173, allowedHosts: ['.ngrok-free.app', '.ngrok.app', '.ngrok.io'], proxy: { '/api': 'http://127.0.0.1:5000' } },
 });

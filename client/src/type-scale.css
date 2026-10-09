@@ -1,0 +1,64 @@
+/* Readability floor for real content (loaded last, after style.css and services.css).
+   Decorative hero-art text is deliberately left out. Selectors are prefixed with :root
+   so they outrank the responsive rules in style.css without !important. */
+:root .header nav { font-size: 14px; }
+:root .eyebrow, :root .hero .eyebrow, :root .approach .eyebrow, :root .faq-section .eyebrow,
+:root .contact-copy .eyebrow, :root .service-showcase-heading > .eyebrow { font-size: 12px; }
+:root .hero-description { font-size: 16px; }
+:root .text-link, :root .hero .button { font-size: 13px; }
+:root .hero-note p { font-size: 12px; }
+:root .capability-strip span { font-size: 11px; }
+:root .section-heading > p, :root .section-heading > div > p:not(.eyebrow) { font-size: 14px; }
+:root .billing-label { font-size: 12px; }
+
+:root .approach-title > p:not(.eyebrow) { font-size: 14px; }
+:root .steps article > span { font-size: 13px; }
+:root .steps p { font-size: 14px; }
+
+:root .plan-top { height: auto; min-height: 172px; }
+:root .plan-label { font-size: 11px; }
+:root .plan p { font-size: 13px; }
+:root .price span, :root .price-range span, :root .premium .price-range span { font-size: 12px; }
+:root .plan-button { font-size: 13px; }
+:root .plan li { font-size: 13px; }
+:root .featured-label { font-size: 11px; }
+:root .plan-note { font-size: 12px; }
+
+:root summary, :root .faq-list summary { font-size: 15px; }
+:root details p { font-size: 14px; }
+
+:root .contact-copy > p:not(.eyebrow) { font-size: 15px; }
+:root .contact-detail > span { font-size: 11px; }
+:root .contact-detail small { font-size: 12px; }
+:root label { font-size: 13px; }
+/* 16px stops iOS Safari zooming the page when a field is focused. */
+:root input, :root select, :root textarea { font-size: 16px; }
+:root form .button { font-size: 14px; }
+:root .form-note { font-size: 12px; }
+:root .form-error { font-size: 13px !important; }
+:root dialog > p:not(.eyebrow) { font-size: 14px; }
+:root pre { font-size: 13px; }
+:root .footer p, :root .footer > span { font-size: 12px; }
+:root .motion-toggle { font-size: 12px; }
+
+:root .service-showcase-intro > span { font-size: 11px; }
+:root .service-showcase-intro p { font-size: 14px; }
+:root .service-stack-label { font-size: 11px; }
+:root .service-stack-description { font-size: 15px; }
+:root .service-stack-copy li { font-size: 12px; }
+:root .service-stack-link { font-size: 14px; }
+
+@media (max-width: 760px) {
+  :root .header nav > a { font-size: 16px; }
+  :root .plan p, :root .plan li, :root .plan-button { font-size: 14px; }
+  :root .steps p, :root details p { font-size: 15px; }
+  :root .service-stack-description { font-size: 15px; }
+  :root .hero-note p { font-size: 13px; }
+}
+
+/* Phones: stack the hero actions so neither label wraps. */
+@media (max-width: 760px) {
+  :root .hero-actions { flex-direction: column; align-items: stretch; gap: 18px; }
+  :root .hero .button { width: 100%; min-height: 54px; padding: 15px 22px; font-size: 15px; white-space: nowrap; }
+  :root .hero .text-link { justify-content: center; gap: 10px; font-size: 14px; white-space: nowrap; padding: 6px 0; }
+}

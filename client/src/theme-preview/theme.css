@@ -1,0 +1,65 @@
+/* Chrome for the temporary /theme page. Neutral colours on purpose so it never changes with the themes. */
+.tp-page { --tp-bg: #efeee9; --tp-card: #fff; --tp-ink: #1b1d1f; --tp-mute: #666b70; --tp-line: #dcdad2; min-height: 100vh; padding: 44px clamp(16px, 4vw, 56px) 80px; background: var(--tp-bg); color: var(--tp-ink); }
+:root[data-theme="dark"] .tp-page { --tp-bg: #0d1114; --tp-card: #171d21; --tp-ink: #f1f1ec; --tp-mute: #a3acb2; --tp-line: #2a3238; }
+.tp-head { max-width: 1400px; margin: 0 auto 34px; display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
+.tp-head p { margin: 0 0 10px; font-size: 12px; letter-spacing: 1.8px; font-weight: 700; color: var(--tp-mute); }
+.tp-head h1 { margin: 0 0 10px; font-size: clamp(36px, 5vw, 56px); letter-spacing: -2px; line-height: 1; }
+.tp-head span { display: block; max-width: 640px; font-size: 15px; line-height: 1.6; color: var(--tp-mute); }
+.tp-grid { max-width: 1400px; margin: auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 400px), 1fr)); gap: 26px; }
+.tp-card { background: var(--tp-card); border: 1px solid var(--tp-line); border-radius: 18px; padding: 14px; display: flex; flex-direction: column; gap: 14px; }
+.tp-meta { display: grid; gap: 14px; padding: 2px 6px 6px; }
+.tp-meta h2 { margin: 0 0 6px; font-size: 20px; letter-spacing: -.5px; }
+.tp-meta h2 span { font-size: 12px; color: var(--tp-mute); font-weight: 600; margin-right: 4px; }
+.tp-meta p { margin: 0; font-size: 14px; line-height: 1.5; color: var(--tp-mute); }
+.tp-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+.tp-solid, .tp-ghost { font: inherit; font-size: 14px; font-weight: 650; min-height: 44px; padding: 0 18px; border-radius: 10px; cursor: pointer; }
+.tp-solid { background: var(--tp-ink); color: var(--tp-card); border: 1px solid var(--tp-ink); }
+.tp-ghost { background: transparent; color: var(--tp-ink); border: 1px solid var(--tp-line); }
+.tp-solid:hover, .tp-ghost:hover { opacity: .85; }
+.tp-solid:focus-visible, .tp-ghost:focus-visible, .tp-bar button:focus-visible { outline: 3px solid #4c8dff; outline-offset: 2px; }
+.tp-swatches { display: flex; gap: 6px; padding: 0 6px; }
+.tp-swatches i { flex: 1; height: 26px; border-radius: 7px; border: 1px solid color-mix(in srgb, var(--tp-ink) 14%, transparent); }
+
+/* Miniature site, drawn only with the real theme tokens. */
+.tp-mock { background: var(--paper); color: var(--ink); border-radius: 12px; padding: 16px; display: grid; gap: 14px; border: 1px solid var(--line); overflow: hidden; }
+.tp-nav { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+.tp-logo { display: inline-block; width: 16px; height: 16px; border-radius: 50%; border: 3px solid var(--ink); border-right-color: var(--orange); vertical-align: -3px; }
+.tp-pill { background: var(--ink); color: var(--paper); border-radius: 6px; padding: 6px 10px; font-size: 11px; font-weight: 700; }
+.tp-hero { display: grid; grid-template-columns: 1.25fr 1fr; align-items: center; gap: 4px; }
+.tp-hero svg { width: 130%; margin-left: -20%; }
+.tp-eyebrow { margin: 0 0 8px; font-size: 9px; letter-spacing: 1.2px; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+.tp-eyebrow i { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); }
+.tp-hero h3 { margin: 0 0 8px; font-family: var(--display); font-size: 27px; line-height: 1.04; letter-spacing: -1.4px; font-weight: 750; }
+.tp-hero em, .tp-deep em { font-family: Georgia, serif; font-weight: 400; letter-spacing: -1px; color: var(--accent-ink); }
+.tp-copy { margin: 0 0 12px; font-size: 12px; line-height: 1.5; color: var(--muted); }
+.tp-actions { display: flex; align-items: center; gap: 12px; }
+.tp-btn { display: inline-block; background: var(--orange); color: var(--on-accent); border: 1px solid var(--orange); border-radius: 6px; padding: 8px 12px; font-size: 11px; font-weight: 700; }
+.tp-btn-out { background: transparent; color: var(--ink); border-color: var(--line); }
+.tp-link { font-size: 11px; font-weight: 700; }
+.tp-tiles { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.tp-tiles span { border-radius: 9px; padding: 14px 4px; text-align: center; font-size: 10px; font-weight: 700; color: var(--ink); border: 1px solid color-mix(in srgb, var(--ink) 7%, transparent); }
+.tp-plans { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.tp-plans > div { background: var(--surface); border: 1px solid var(--line); border-radius: 9px; padding: 12px; display: grid; gap: 6px; justify-items: start; }
+.tp-plans small, .tp-deep small { font-size: 8px; letter-spacing: 1.3px; font-weight: 700; color: var(--muted); }
+.tp-plans b { font-family: var(--display); font-size: 21px; letter-spacing: -1px; }
+.tp-featured { border-color: var(--orange) !important; background: var(--accent-wash) !important; }
+.tp-deep { background: var(--deep); color: #fff; border-radius: 9px; padding: 16px; display: grid; gap: 8px; }
+.tp-deep small { color: var(--on-deep-muted); }
+.tp-deep b { font-family: var(--display); font-size: 22px; letter-spacing: -1px; font-weight: 650; }
+.tp-deep em { color: var(--accent-on-dark); }
+
+/* Floating switcher over the live site. */
+.tp-bar { position: fixed; z-index: 2147483000; left: 50%; bottom: 16px; transform: translateX(-50%); max-width: calc(100vw - 20px); display: flex; align-items: center; gap: 8px; padding: 8px 10px; background: #14181b; color: #f4f4ef; border: 1px solid #ffffff22; border-radius: 16px; box-shadow: 0 14px 40px #0006; font: 600 13px/1 system-ui, sans-serif; overflow-x: auto; }
+.tp-bar strong { white-space: nowrap; font-weight: 650; min-width: 110px; text-align: center; }
+.tp-bar button { font: inherit; color: inherit; background: #ffffff14; border: 0; border-radius: 9px; min-height: 36px; padding: 0 12px; cursor: pointer; white-space: nowrap; }
+.tp-bar button:hover { background: #ffffff26; }
+.tp-dots { display: flex; gap: 6px; padding: 0 4px; }
+.tp-dots button { width: 24px; min-height: 24px; height: 24px; padding: 0; border-radius: 50%; border: 2px solid transparent; }
+.tp-dots button.on { border-color: #fff; }
+@media (max-width: 600px) { .tp-hero h3 { font-size: 23px; } .tp-bar strong { min-width: 0; } }
+
+.tp-group { max-width: 1400px; margin: 0 auto 54px; }
+.tp-group-title { margin: 0 0 20px; display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; font-size: 24px; letter-spacing: -.6px; }
+.tp-group-title small { font-size: 14px; font-weight: 500; letter-spacing: 0; color: var(--tp-mute); }
+.tp-group .tp-grid { max-width: none; }
+.tp-badge { font-style: normal; font-size: 11px; font-weight: 700; letter-spacing: .6px; margin-left: 8px; padding: 3px 8px; border-radius: 99px; background: var(--tp-ink); color: var(--tp-card); vertical-align: 2px; }
