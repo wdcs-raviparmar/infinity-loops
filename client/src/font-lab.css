@@ -1,0 +1,38 @@
+:root[data-font="manrope"] { --display: 'Manrope', sans-serif; --body: 'DM Sans', sans-serif; }
+:root[data-font="space"] { --display: 'Space Grotesk', sans-serif; --body: 'Space Grotesk', sans-serif; }
+:root[data-font="sora"] { --display: 'Sora', sans-serif; --body: 'Sora', sans-serif; }
+:root[data-font="barlow"] { --display: 'Barlow Condensed', sans-serif; --body: 'DM Sans', sans-serif; }
+:root[data-font="jakarta"] { --display: 'Plus Jakarta Sans', sans-serif; --body: 'Plus Jakarta Sans', sans-serif; }
+.font-lab { min-height: 100vh; width: min(1400px,calc(100% - 80px)); margin: auto; padding-bottom: 40px; }
+.font-lab-header { height: 104px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
+.font-lab-header .brand-logo { width: 255px; }
+.font-lab-site-link { display: inline-flex; align-items: center; gap: 18px; font-weight: 700; font-size: 12px; }
+.font-lab-site-link span { color: var(--orange); font-size: 22px; }
+.font-lab-intro { display: grid; grid-template-columns: .9fr 1.1fr; gap: 60px; align-items: end; padding: 72px 0 54px; }
+.font-lab-intro .eyebrow { grid-column: 1/-1; margin-bottom: -18px; }
+.font-lab-intro h1 { margin: 0; font-size: clamp(62px,7vw,105px); line-height: .95; }
+.font-lab-intro h1 em,.font-lab-preview h2 em { color: var(--orange); font-family: Georgia,serif; font-weight: 400; }
+.font-lab-intro > p:last-child { color: var(--muted); font-size: 16px; line-height: 1.75; max-width: 550px; margin: 0 0 8px; }
+.font-options { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.font-option { min-width: 0; border-right: 1px solid var(--line); background: var(--surface); }
+.font-option:last-child { border-right: 0; }
+.font-option button { width: 100%; height: 100%; min-height: 420px; display: flex; flex-direction: column; align-items: flex-start; padding: 24px 20px; border: 0; background: transparent; color: var(--ink); text-align: left; }
+.font-option button:hover { background: var(--pale); }
+.font-option.is-selected { background: var(--pale); box-shadow: inset 0 4px var(--orange); }
+.font-number,.font-mood,.font-check { font: 700 8px var(--body); letter-spacing: 1.1px; }
+.font-number { color: var(--orange); }
+.font-mood { margin-top: 10px; color: var(--muted); }
+.font-check { align-self: flex-end; margin-top: -25px; display: grid; place-items: center; width: 29px; height: 29px; border: 1px solid var(--line); border-radius: 50%; color: var(--orange); font-size: 14px; }
+.font-option strong { display: block; font-size: 22px; margin-top: 44px; }
+.font-sample { display: block; font-size: 34px; line-height: 1.03; letter-spacing: -1.4px; margin: 23px 0; }
+.font-body { color: var(--muted); font-size: 12px; line-height: 1.65; }
+.font-option small { margin-top: auto; padding-top: 28px; color: var(--muted); font: 700 7px var(--body); letter-spacing: .8px; line-height: 1.5; }
+.font-manrope button { font-family: Manrope,sans-serif; }.font-space button { font-family: 'Space Grotesk',sans-serif; }.font-sora button { font-family: Sora,sans-serif; }.font-barlow button { font-family: 'Barlow Condensed',sans-serif; }.font-jakarta button { font-family: 'Plus Jakarta Sans',sans-serif; }
+.font-barlow .font-body,.font-barlow small,.font-barlow .font-number,.font-barlow .font-mood,.font-barlow .font-check { font-family: 'DM Sans',sans-serif; }
+.font-lab-preview { margin-top: 28px; padding: 65px; border-radius: 12px; background: #18242b; color: #fffefa; display: grid; grid-template-columns: 1.1fr .9fr; gap: 80px; align-items: end; }
+.font-lab-preview h2 { font-size: clamp(55px,6vw,88px); line-height: .98; margin: 0; }
+.font-lab-preview > div:last-child > p { color: #bdc6ca; max-width: 470px; line-height: 1.75; margin-bottom: 30px; }
+.font-lab-footer { display: flex; justify-content: space-between; gap: 20px; padding: 24px 2px 0; color: var(--muted); font-size: 10px; }
+@media(max-width:1050px){.font-options{grid-template-columns:repeat(2,minmax(0,1fr))}.font-option{border-bottom:1px solid var(--line)}.font-option:nth-child(2n){border-right:0}.font-option:last-child{border-bottom:0}.font-option button{min-height:350px}.font-lab-preview{gap:35px;padding:45px}}
+@media(max-width:760px){.font-lab{width:calc(100% - 40px)}.font-lab-header{height:82px}.font-lab-header .brand-logo{width:190px}.font-lab-site-link{font-size:0;gap:0}.font-lab-site-link span{font-size:24px}.font-lab-intro{display:block;padding:52px 0 35px}.font-lab-intro .eyebrow{margin-bottom:20px}.font-lab-intro h1{font-size:clamp(54px,15vw,75px)}.font-lab-intro>p:last-child{font-size:14px;margin-top:26px}.font-options{grid-template-columns:1fr}.font-option,.font-option:nth-child(2n){border-right:0}.font-option button{min-height:300px}.font-option strong{margin-top:32px}.font-sample{font-size:38px}.font-lab-preview{grid-template-columns:1fr;padding:35px 25px;gap:28px}.font-lab-preview h2{font-size:50px}.font-lab-footer{display:block;line-height:1.7}}
+@media(prefers-reduced-motion:reduce){.font-option button{transition:none}}
