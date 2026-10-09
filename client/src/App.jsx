@@ -46,10 +46,29 @@ function Hero({ paused, onToggleMotion }) { return <>
 
 </>; }
 
-function Services() { return <>
-<section className="services wrap section" id="services"><div className="section-heading"><div><p className="eyebrow">WHAT WE BRING TO THE TABLE</p><h2>All the right moves.<br />One creative partner.</h2></div><p>From the first impression to the next enquiry,<br />we help your brand connect the dots.</p></div><div className="service-grid"><article><div className="service-icon">✳</div><h3>Content with character.</h3><p>Posts, carousels, and reels that sound like you, look like you, and give people a reason to stay.</p><span>SOCIAL MEDIA & CONTENT</span></article><article><div className="service-icon">↗</div><h3>Strategy with direction.</h3><p>Market research, competitor insights, and campaign planning that give every creative decision a purpose.</p><span>STRATEGY & ADS MANAGEMENT</span></article><article><div className="service-icon">◉</div><h3>A presence that connects.</h3><p>Custom web experiences, creator collaborations, and brand shoots that bring your story into focus.</p><span>WEBSITES & BRAND EXPERIENCES</span></article></div></section>
+const services = [
+  { icon: '◎', title: 'Social media, managed.', outcome: 'Stay visible and relevant', copy: 'A consistent social presence shaped around your brand, audience, and monthly goals.', includes: 'Content calendars · publishing · captions' },
+  { icon: '✦', title: 'Content worth stopping for.', outcome: 'Turn attention into interest', copy: 'Posts, carousels, and reels with a clear idea, a strong hook, and your personality built in.', includes: 'Design · reels · copywriting' },
+  { icon: '↗', title: 'Performance with purpose.', outcome: 'Reach the people who matter', copy: 'Focused campaigns and thoughtful creative that move the right audience towards action.', includes: 'Meta ads · creative testing · optimisation' },
+  { icon: '⌁', title: 'Strategy with direction.', outcome: 'Know your next best move', copy: 'Market context, competitor insight, and campaign planning that give every idea a job to do.', includes: 'Research · positioning · campaign plans' },
+  { icon: '▣', title: 'Digital spaces that connect.', outcome: 'Make every visit count', copy: 'Clear, memorable websites and landing pages that tell your story and guide people forward.', includes: 'Web design · landing pages · conversion flow' },
+  { icon: '◌', title: 'Collaborations with chemistry.', outcome: 'Bring real people into the story', copy: 'Creator partnerships and brand shoots planned to feel natural, useful, and true to your audience.', includes: 'Creators · shoots · campaign concepts' },
+];
 
-</>; }
+function Services() { return <section className="services wrap section" id="services">
+  <div className="services-heading">
+    <div><p className="eyebrow"><span className="status-dot" /> WHAT WE BRING TO THE TABLE</p><h2>Everything your brand needs<br />to stay <em>in motion.</em></h2></div>
+    <div><p className="services-lead">One connected creative partner for the ideas people see and the strategy that makes them work.</p><p className="services-note">Choose a starting point. We’ll shape the right mix around your goals.</p></div>
+  </div>
+  <div className="services-meta"><span>06 WAYS TO MOVE YOUR BRAND FORWARD</span><span>EXPLORE THE MIX <b>↓</b></span></div>
+  <div className="service-grid">{services.map((service, index) => <article key={service.title}>
+    <div className="service-card-top"><span className="service-icon" aria-hidden="true">{service.icon}</span><span className="service-number">0{index + 1}</span></div>
+    <h3>{service.title}</h3><strong>{service.outcome}</strong><p>{service.copy}</p>
+    <div className="service-includes">{service.includes}</div>
+    <a href="#contact" aria-label={`Enquire about ${service.title}`}>Start a conversation <span>↗</span></a>
+  </article>)}</div>
+  <div className="service-cta"><span className="service-cta-mark">✦</span><div><strong>Not sure where to begin?</strong><p>Tell us what you want to achieve. We’ll help you find the right starting point.</p></div><a href="#contact">Find your starting point <span>↗</span></a></div>
+</section>; }
 
 function Approach() { return <>
 <section className="approach" id="approach"><div className="wrap approach-inner"><div className="approach-title"><p className="eyebrow">THE INFINITY APPROACH</p><h2>Good growth<br />is a <em>loop.</em></h2><p>We keep listening, creating, and refining.<br />Because your brand’s next chapter<br />should build on the last.</p><span className="approach-loop" aria-hidden="true">∞</span></div><div className="steps"><article><span>01</span><div><h3>Find your direction</h3><p>Understand your business, your audience, and what you want to achieve.</p></div></article><article><span>02</span><div><h3>Create something worth noticing</h3><p>Turn that direction into thoughtful visuals, compelling stories, and engaging content.</p></div></article><article><span>03</span><div><h3>Put it in front of the right people</h3><p>Bring your brand to life across the platforms that matter to your audience.</p></div></article><article><span>04</span><div><h3>Learn. Refine. Repeat.</h3><p>Use audience response and market insights to shape what comes next.</p></div></article></div></div></section>
