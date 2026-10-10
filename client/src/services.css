@@ -39,9 +39,9 @@
 
 /* Scroll controls the whole composition; cards don't just fade into view. */
 @media (min-width: 801px) and (min-height: 720px) and (prefers-reduced-motion: no-preference) {
-  .has-stack-motion .service-stack-item { position: sticky; top: var(--stick-top, 28px); margin-bottom: 90px; }
+  .has-stack-motion .service-stack-item { position: sticky; top: var(--stick-top, 104px); margin-bottom: 90px; }
   .has-stack-motion .service-stack-item:last-child { margin-bottom: 0; }
-  .has-stack-motion .service-stack-card { min-height: min(630px, calc(100svh - 85px)); transform: perspective(1400px) translateY(calc(var(--covered) * -16px)) rotateX(calc(var(--covered) * -4deg)) rotate(calc(var(--covered) * -1deg)) scale(calc(1 - var(--covered) * .065)); filter: brightness(calc(1 - var(--covered) * .13)); }
+  .has-stack-motion .service-stack-card { min-height: min(630px, calc(100svh - 132px)); transform: perspective(1400px) translateY(calc(var(--covered) * -16px)) rotateX(calc(var(--covered) * -4deg)) rotate(calc(var(--covered) * -1deg)) scale(calc(1 - var(--covered) * .065)); filter: brightness(calc(1 - var(--covered) * .13)); }
   .has-stack-motion .service-photo { translate: 0 calc((1 - var(--enter)) * 65px); rotate: calc((1 - var(--enter)) * -6deg); }
   .has-stack-motion .service-photo img { transform: scale(calc(1.02 + (1 - var(--enter)) * .1)); }
   .service-stack-item:focus-within { z-index: 10; }
@@ -49,7 +49,7 @@
 }
 /* Phones: same stacking, lighter transforms. Tall cards pin by their bottom edge (see --stick-top). */
 @media (max-width: 800px) and (prefers-reduced-motion: no-preference) {
-  .has-stack-motion .service-stack-item { position: sticky; top: var(--stick-top, 14px); margin-bottom: 48px; }
+  .has-stack-motion .service-stack-item { position: sticky; top: var(--stick-top, 88px); margin-bottom: 48px; }
   .has-stack-motion .service-stack-item:last-child { margin-bottom: 0; }
   .has-stack-motion .service-stack-card { transform: translateY(calc(var(--covered) * -8px)) scale(calc(1 - var(--covered) * .06)); filter: brightness(calc(1 - var(--covered) * .16)); }
   .has-stack-motion .service-photo { translate: 0 calc((1 - var(--enter)) * 40px); rotate: calc((1 - var(--enter)) * -4deg); }
