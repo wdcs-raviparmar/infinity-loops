@@ -1,0 +1,121 @@
+/* Glass (frosted) effect. Loaded last; remove the import in main.jsx to turn it all off.
+   Colours come from the theme tokens, so it follows whichever theme is active, in light and dark. */
+:root {
+  --glass-bg: color-mix(in srgb, var(--surface) 52%, transparent);
+  --glass-bg-strong: color-mix(in srgb, var(--surface) 72%, transparent);
+  --glass-border: color-mix(in srgb, #fff 70%, transparent);
+  --glass-edge: inset 0 1px 0 color-mix(in srgb, #fff 80%, transparent);
+  --glass-shadow: 0 18px 44px -18px color-mix(in srgb, var(--t-ink) 28%, transparent);
+  --glass-blur: blur(18px) saturate(1.7);
+}
+:root[data-theme="dark"] {
+  --glass-bg: color-mix(in srgb, var(--ink) 7%, transparent);
+  --glass-bg-strong: color-mix(in srgb, var(--surface) 70%, transparent);
+  --glass-border: color-mix(in srgb, #fff 16%, transparent);
+  --glass-edge: inset 0 1px 0 color-mix(in srgb, #fff 18%, transparent);
+  --glass-shadow: 0 18px 44px -16px #000a;
+}
+
+/* Two faint, same-family glows (no rainbow, nothing at the screen edges) so the glass has a little to refract. */
+body { position: relative; }
+body::before { content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(34vmax 30vmax at 30% 22%, color-mix(in srgb, var(--t-accent) 9%, transparent), transparent 72%),
+    radial-gradient(32vmax 30vmax at 72% 58%, color-mix(in srgb, var(--t-warm) 11%, transparent), transparent 72%); }
+:root[data-theme="dark"] body::before { opacity: .7; }
+:root .contact-section { background: color-mix(in srgb, var(--pale) 62%, transparent); }
+
+/* Shared glass surface */
+:root .glass, :root .header, :root .header nav.is-open, :root .plan, :root form, :root dialog, :root .floating-tag, :root .strategy-tag,
+:root .theme-toggle, :root .motion-toggle, :root .back-top, :root .dialog-close {
+  -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur);
+}
+
+/* Floating header */
+div:has(> header.header) { display: contents; }
+:root .header { position: sticky; top: 14px; z-index: 50; width: min(1376px, calc(100% - 40px)); height: 72px; margin: 14px auto 0; padding: 0 12px 0 24px;
+  background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 999px; box-shadow: var(--glass-edge), var(--glass-shadow); }
+:root .header .brand-logo { width: 190px; }
+:root .header .button-small { min-height: 46px; }
+:root .theme-toggle { background: var(--glass-bg); border-color: var(--glass-border); box-shadow: var(--glass-edge); }
+
+/* Hero tags float on the art */
+:root .floating-tag, :root .strategy-tag { background: var(--glass-bg-strong); border: 1px solid var(--glass-border); box-shadow: var(--glass-edge), var(--glass-shadow); }
+:root .motion-toggle { background: var(--glass-bg); border: 1px solid var(--glass-border); box-shadow: var(--glass-edge); border-radius: 999px; padding: 7px 14px; }
+:root .motion-toggle:hover { background: var(--glass-bg-strong); }
+
+/* Plans */
+:root .plan { background: var(--glass-bg); border: 1px solid var(--glass-border); box-shadow: var(--glass-edge), var(--glass-shadow); }
+:root .plan.featured { background: color-mix(in srgb, var(--t-accent) 12%, var(--glass-bg)); border-color: color-mix(in srgb, var(--t-accent) 70%, transparent); }
+:root .plan.premium { background: var(--glass-bg); }
+:root .plan:hover { box-shadow: var(--glass-edge), 0 26px 52px -18px color-mix(in srgb, var(--t-ink) 34%, transparent); }
+:root .button-outline { background: color-mix(in srgb, var(--surface) 35%, transparent); border-color: var(--glass-border); box-shadow: var(--glass-edge); }
+:root .button-outline:hover { background: var(--glass-bg-strong); border-color: var(--orange); }
+
+/* Enquiry form and dialog */
+:root form { background: var(--glass-bg-strong); border: 1px solid var(--glass-border); box-shadow: var(--glass-edge), var(--glass-shadow); }
+:root input, :root select, :root textarea { background: color-mix(in srgb, var(--surface) 55%, transparent); border-color: color-mix(in srgb, var(--ink) 14%, transparent); }
+:root input:focus, :root select:focus, :root textarea:focus { background: color-mix(in srgb, var(--surface) 85%, transparent); }
+:root dialog { background: var(--glass-bg-strong); border: 1px solid var(--glass-border); box-shadow: var(--glass-edge), 0 30px 90px #0004; }
+:root dialog::backdrop { background: color-mix(in srgb, var(--t-deep) 38%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+:root pre { background: color-mix(in srgb, var(--ink) 6%, transparent); }
+:root .back-top, :root .dialog-close { background: var(--glass-bg); border-color: var(--glass-border); box-shadow: var(--glass-edge); }
+
+/* Services: cards stay opaque for the stacking effect; chips and photo frames get a glass sheen. */
+:root .service-stack-copy li { background: color-mix(in srgb, var(--card-ink) 6%, transparent); box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 45%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+:root .service-photo-frame { border-color: color-mix(in srgb, #fff 80%, transparent); }
+
+/* Glass buttons */
+:root .button { position: relative; isolation: isolate; overflow: hidden; -webkit-backdrop-filter: blur(10px) saturate(1.6); backdrop-filter: blur(10px) saturate(1.6); }
+:root .button::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(180deg, color-mix(in srgb, #fff 42%, transparent) 0%, color-mix(in srgb, #fff 8%, transparent) 46%, transparent 52%); }
+:root .button::after { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(110deg, transparent 34%, color-mix(in srgb, #fff 38%, transparent) 50%, transparent 66%); transform: translateX(-120%); transition: transform .7s cubic-bezier(.2, .8, .2, 1); }
+:root .button:hover::after { transform: translateX(120%); }
+:root .button:disabled::after { display: none; }
+
+/* Accent (primary) */
+:root .button:not(.button-outline):not(.button-small) {
+  background: linear-gradient(160deg, color-mix(in srgb, var(--orange) 84%, transparent), color-mix(in srgb, var(--orange) 96%, transparent));
+  border: 1px solid color-mix(in srgb, #fff 55%, transparent); border-radius: 14px;
+  box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 70%, transparent), inset 0 -1px 0 color-mix(in srgb, #000 10%, transparent), 0 16px 30px -14px color-mix(in srgb, var(--orange) 75%, transparent);
+  transition: transform .3s cubic-bezier(.2, .8, .2, 1), box-shadow .3s, background .3s; }
+:root .button:not(.button-outline):not(.button-small):hover {
+  background: linear-gradient(160deg, color-mix(in srgb, var(--orange) 78%, #fff), color-mix(in srgb, var(--orange) 96%, transparent));
+  transform: translateY(-3px);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 80%, transparent), inset 0 -1px 0 color-mix(in srgb, #000 10%, transparent), 0 22px 36px -14px color-mix(in srgb, var(--orange) 85%, transparent); }
+:root .button:active { transform: translateY(0) scale(.985); }
+
+/* Header call-to-action (dark glass) */
+:root .button-small { background: color-mix(in srgb, var(--ink) 94%, transparent); border: 1px solid color-mix(in srgb, #fff 22%, transparent); border-radius: 14px;
+  box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 28%, transparent), 0 14px 28px -14px color-mix(in srgb, var(--ink) 70%, transparent); }
+:root .button-small:hover { background: color-mix(in srgb, var(--ink) 86%, var(--orange)); }
+
+/* Outline (clear glass) */
+:root .button-outline { border-radius: 14px; background: linear-gradient(160deg, color-mix(in srgb, var(--surface) 62%, transparent), color-mix(in srgb, var(--surface) 28%, transparent));
+  border: 1px solid var(--glass-border); box-shadow: var(--glass-edge), 0 10px 22px -16px color-mix(in srgb, var(--t-ink) 30%, transparent); }
+:root .button-outline::before { opacity: .55; }
+:root .button-outline:hover { background: linear-gradient(160deg, color-mix(in srgb, var(--surface) 80%, transparent), color-mix(in srgb, var(--pale) 50%, transparent)); border-color: color-mix(in srgb, var(--orange) 70%, transparent); transform: translateY(-2px); }
+:root[data-theme="dark"] .button::before { opacity: .55; }
+:root[data-theme="dark"] .button:not(.button-outline):not(.button-small) { background: linear-gradient(160deg, color-mix(in srgb, var(--orange) 90%, transparent), var(--orange)); border-color: color-mix(in srgb, #fff 35%, transparent); }
+
+/* Small round controls and links */
+:root .service-link-circle { background: color-mix(in srgb, var(--card-ink) 86%, transparent); border: 1px solid color-mix(in srgb, #fff 30%, transparent); box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 30%, transparent), 0 10px 20px -10px color-mix(in srgb, var(--card-ink) 60%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+
+/* Phones */
+@media (max-width: 760px) {
+  :root .header { top: 10px; width: calc(100% - 24px); height: 64px; margin-top: 10px; padding: 0 8px 0 18px; border-radius: 22px; }
+  :root .header .brand-logo { width: 170px; }
+  :root .header nav { top: calc(100% + 10px); border: 1px solid var(--glass-border); border-radius: 22px; background: var(--glass-bg-strong); box-shadow: var(--glass-edge), var(--glass-shadow); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); }
+}
+
+/* Fallbacks: no blur support, or the visitor asked for less transparency. */
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  :root { --glass-bg: var(--surface); --glass-bg-strong: var(--surface); }
+}
+@media (prefers-reduced-transparency: reduce) {
+  :root .button { -webkit-backdrop-filter: none; backdrop-filter: none; }
+  :root { --glass-bg: var(--surface); --glass-bg-strong: var(--surface); --glass-blur: none; }
+  :root .header, :root .plan, :root form, :root dialog, :root .floating-tag, :root .strategy-tag, :root .theme-toggle, :root .motion-toggle, :root .back-top, :root .dialog-close, :root .header nav { -webkit-backdrop-filter: none; backdrop-filter: none; }
+  body::before { display: none; }
+}

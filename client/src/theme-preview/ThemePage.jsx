@@ -22,13 +22,13 @@ function useCopy() {
 function Mock({ theme }) {
   const gradient = `tp-g-${theme.id}`;
   return <div className="tp-mock">
-    <div className="tp-nav"><b><i className="tp-logo" /> Infinity Loops</b><span className="tp-pill">Let’s talk ↗︎</span></div>
+    <div className="tp-nav"><b><i className="tp-logo" /> Infinity Loops</b><span className="tp-pill">Let’s talk</span></div>
     <div className="tp-hero">
       <div>
         <p className="tp-eyebrow"><i /> BIG IDEAS. INFINITE POSSIBILITIES.</p>
         <h3>Good brands deserve a bigger <em>loop.</em></h3>
         <p className="tp-copy">We turn your brand into the one they remember.</p>
-        <div className="tp-actions"><span className="tp-btn">Find your growth plan ↗︎</span><span className="tp-link">Explore ↓</span></div>
+        <div className="tp-actions"><span className="tp-btn">Find your growth plan</span><span className="tp-link">Explore</span></div>
       </div>
       <svg viewBox="0 0 650 540" aria-hidden="true">
         <defs><linearGradient id={gradient} x1="0" x2="1" y1="0" y2=".7"><stop offset="0" style={{ stopColor: 'var(--t-art-a)' }} /><stop offset=".45" style={{ stopColor: 'var(--t-art-b)' }} /><stop offset="1" style={{ stopColor: 'var(--t-art-c)' }} /></linearGradient></defs>
@@ -39,8 +39,8 @@ function Mock({ theme }) {
       {['social', 'content', 'ads', 'strategy', 'web'].map(key => <span key={key} style={{ background: `var(--card-${key})` }}>{key === 'ads' ? 'Paid Ads' : key[0].toUpperCase() + key.slice(1)}</span>)}
     </div>
     <div className="tp-plans">
-      <div><small>LAUNCH</small><b>₹6,000</b><span className="tp-btn tp-btn-out">Choose ↗︎</span></div>
-      <div className="tp-featured"><small>GROW</small><b>₹10,000</b><span className="tp-btn">Choose ↗︎</span></div>
+      <div><small>LAUNCH</small><b>₹6,000</b><span className="tp-btn tp-btn-out">Choose</span></div>
+      <div className="tp-featured"><small>GROW</small><b>₹10,000</b><span className="tp-btn">Choose</span></div>
     </div>
     <div className="tp-deep"><small>THE INFINITY APPROACH</small><b>Good growth is a <em>loop.</em></b></div>
   </div>;
@@ -57,7 +57,7 @@ function Gallery({ onPick }) {
   return <div className="tp-page">
     <header className="tp-head">
       <div><p>TEMPORARY PAGE · /theme</p><h1>Pick a theme</h1><span>Twenty palettes in three groups: the original set, professional light palettes and dark-tone palettes. “Try on live site” recolours the real website, including the logo and hero art, so you can scroll through everything.</span></div>
-      <button className="tp-ghost" onClick={() => setDark(value => !value)}>{dark ? '☀︎ Show light' : '☾ Show dark'}</button>
+      <button className="tp-ghost" onClick={() => setDark(value => !value)}>{dark ? 'Show light' : 'Show dark'}</button>
     </header>
     {groups.map(group => <section key={group} className="tp-group">
       <h2 className="tp-group-title">{group}<small>{group === 'Dark tone' ? 'Dark by default' : group === 'Professional' ? 'Restrained, corporate-grade light palettes' : 'The first set, plus the current look'}</small></h2>
@@ -69,7 +69,7 @@ function Gallery({ onPick }) {
             <div><h2><span>{String(themes.indexOf(theme)).padStart(2, '0')}</span> {theme.name}{theme.dark && <em className="tp-badge">Dark</em>}</h2><p>{theme.vibe}</p></div>
             <div className="tp-buttons">
               <button className="tp-solid" onClick={() => onPick(theme.id)}>Try on live site</button>
-              <button className="tp-ghost" onClick={() => copy(theme.id, cssBlock(theme.tokens))}>{copied === theme.id ? 'Copied ✓' : 'Copy tokens'}</button>
+              <button className="tp-ghost" onClick={() => copy(theme.id, cssBlock(theme.tokens))}>{copied === theme.id ? 'Copied' : 'Copy tokens'}</button>
             </div>
           </div>
         </article>)}
@@ -97,12 +97,12 @@ function Live({ id, onPick, onBack }) {
   return <>
     <Suspense fallback={null}><App key={theme.id} /></Suspense>
     <nav className="tp-bar" aria-label="Theme switcher">
-      <button onClick={onBack}>← All themes</button>
+      <button onClick={onBack}>All themes</button>
       <button onClick={() => step(-1)} aria-label="Previous theme">‹</button>
       <strong>{theme.name}</strong>
       <button onClick={() => step(1)} aria-label="Next theme">›</button>
       <span className="tp-dots">{themes.map(item => <button key={item.id} className={item.id === theme.id ? 'on' : ''} title={item.name} aria-label={item.name} onClick={() => onPick(item.id)} style={{ background: `linear-gradient(135deg, ${item.tokens.ink} 50%, ${item.tokens.accent} 50%)` }} />)}</span>
-      <button onClick={() => copy('live', cssBlock(theme.tokens))}>{copied === 'live' ? 'Copied ✓' : 'Copy tokens'}</button>
+      <button onClick={() => copy('live', cssBlock(theme.tokens))}>{copied === 'live' ? 'Copied' : 'Copy tokens'}</button>
     </nav>
   </>;
 }

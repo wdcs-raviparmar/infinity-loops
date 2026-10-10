@@ -62,3 +62,13 @@
   :root .hero .button { width: 100%; min-height: 54px; padding: 15px 22px; font-size: 15px; white-space: nowrap; }
   :root .hero .text-link { justify-content: center; gap: 10px; font-size: 14px; white-space: nowrap; padding: 6px 0; }
 }
+
+/* Icon-free layout: plain-text controls and CSS-only separators (no glyphs, so every device renders the same). */
+:root .capability-strip .asterisk { width: 6px; height: 6px; padding: 0; border-radius: 50%; background: var(--orange); font-size: 0; flex: none; }
+:root .button { justify-content: center; text-align: center; }
+:root .back-top { width: auto; height: auto; padding: 9px 16px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+:root .dialog-close { width: auto; height: auto; top: 14px; right: 14px; padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; font-weight: 600; line-height: 1.2; }
+:root .dialog-close:hover:not(:disabled) { background: var(--pale); border-color: var(--orange); }
+:root .service-stack-link { padding: 10px 0; border-bottom: 2px solid currentColor; font-size: 14px; }
+:root .service-stack-link:hover { border-bottom-color: var(--orange); }
+:root .hero-note { margin-top: 30px; }
